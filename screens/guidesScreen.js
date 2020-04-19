@@ -5,6 +5,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderbutton from '../components/Custombutton';
 import axios from '../axios-guides';
 import fire from '../config/fire';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const GuidesScreen = (props) => {
 
@@ -46,17 +47,16 @@ const GuidesScreen = (props) => {
  
      }
      getguides()
-    }, [])
+    }, [guides])
     
     let guidelist 
     if(guides) {
         guidelist = guides.map(singleguide => {
-           return ( <Text key={singleguide.titel}>{singleguide.titel}</Text> )
+           return ( <ScrollView><View style={styles.tile}><Text key={singleguide.titel}>{singleguide.titel}</Text></View></ScrollView>)
         }) 
     }
     return (
         <View>
-            <Text>GuidesScreen</Text>
             {guidelist}
             <Button onPress={() => {props.navigation.navigate('Singleguide')}}>click</Button>
         </View>
@@ -83,7 +83,14 @@ GuidesScreen.navigationOptions = navData => {
 
 
 const styles = StyleSheet.create({
-
+    tile: {
+        borderBottomColor: '#ccc',
+    borderBottomWidth: 1,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    flexDirection: 'row',
+    alignItems: 'center'
+    }
 })
 
 export default GuidesScreen
