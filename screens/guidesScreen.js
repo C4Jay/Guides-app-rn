@@ -22,7 +22,7 @@ GuidesScreen.navigationOptions = navData => {
         title="create place"
         iconName={Platform.OS === 'android' ? 'md-add' : 'ios-add'}
         onPress={() => {
-            navData.navigation.navigate('Singleguide')
+            navData.navigation.navigate('Createguide')
         }}>
 
         </Item>
